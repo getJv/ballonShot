@@ -1,8 +1,20 @@
 #Greenfoot properties
-#Mon May 29 20:56:11 BRT 2017
+#Mon May 29 21:52:48 BRT 2017
+class.Ballon.superclass=Ator
 project.charset=UTF-8
+class.Ator.superclass=greenfoot.Actor
+mainWindow.height=600
 version=3.0.0
+class.MainMenu.superclass=greenfoot.World
+class.Click.image=click.png
+class.Logo.image=logo_pequena.png
+simulation.speed=50
+world.lastInstantiated=MainMenu
+class.MainMenu.image=mainMenu.png
 mainWindow.y=40
 mainWindow.x=40
-mainWindow.height=600
+class.Logo.superclass=Ator
+class.Lvl1.image=lvl1.png
 mainWindow.width=850
+class.Lvl1.superclass=greenfoot.World
+class.Click.superclass=Ator
