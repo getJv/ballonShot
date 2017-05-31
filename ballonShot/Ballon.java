@@ -19,10 +19,30 @@ public class Ballon extends Ator
     public void act() 
     {
         // Add your action code here.
+       
+        gerenciaSubida();
+        gerenciaImagem(getWorldOfType(Lvl1.class));
+        
+    }
+    
+    public void gerenciaImagem(Lvl1 mundo){
+        
         setImage("ballon/ballon" + passo + ".png");
-        passo++;
-        if (passo==6){
-            passo=1;
+        if ((mundo.getCiclo()%15)==0){
+             
+             passo++;
+            if (passo==6){
+                 passo=1;
+                }
         }
-    }    
+    
+    }
+    
+    public void gerenciaSubida(){
+     if ((getWorldOfType(Lvl1.class).getCiclo()%4)==0){
+             setLocation(getX(),getY()-2);
+        }
+    
+    }
+    
 }
