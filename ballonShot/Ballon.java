@@ -13,36 +13,71 @@ public class Ballon extends Ator
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public int passo=1;
+    public boolean estourado = false;
     public Ballon(){
         setImage("ballon/ballon0.png");
     }
+
     public void act() 
     {
         // Add your action code here.
-       
+
         gerenciaSubida();
+        
+        gerenciaClick();
         gerenciaImagem(getWorldOfType(Lvl1.class));
+        balaoSaiDeCena();//você tem que ser o útimo método a ser executado, por que
+        // ninguem gosta de você !
+
         
     }
-    
+
+    public void gerenciaClick(){
+        if (Greenfoot.mouseClicked(this)){
+            Greenfoot.playSound("ploc.wav");
+            
+            estourado = true;
+            passo = 1;
+        }
+
+    }
+
+    public void balaoSaiDeCena(){
+        if (getY()==0 && !estourado) {
+            getWorld().removeObject(this);
+        }
+        else if (passo==4 && estourado){
+                getWorld().removeObject(this);
+            }
+    }
+
     public void gerenciaImagem(Lvl1 mundo){
-        
-        setImage("ballon/ballon" + passo + ".png");
+
+        if (estourado){
+            
+            
+            setImage("ballonExplode/ballonExplode" + passo + ".png");
+          
+        }
+        else {
+            setImage("ballon/ballon" + passo + ".png");
+        }
+
         if ((mundo.getCiclo()%15)==0){
-             
-             passo++;
+
+            passo++;
             if (passo==6){
-                 passo=1;
-                }
+                passo=1;
+            }
         }
-    
+
     }
-    
+
     public void gerenciaSubida(){
-     if ((getWorldOfType(Lvl1.class).getCiclo()%4)==0){
-             setLocation(getX(),getY()-2);
+        if ((getWorldOfType(Lvl1.class).getCiclo()%4)==0){
+            setLocation(getX(),getY()-6);
         }
-    
+
     }
-    
+
 }

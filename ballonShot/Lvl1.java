@@ -18,20 +18,29 @@ public class Lvl1 extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 500, 1); 
-        addObject(new Ballon(), 200, 450);
+
     }
-    
+
     public void act(){
-        //showText(String.valueOf(ciclo++), 100,100);
+        gerenciarEntradaBalao();
         ciclo++;
         if (ciclo==1000){
             ciclo = 1;
         }
-        
-        
+
         
     }
+
+    public void gerenciarEntradaBalao(){
+
+        if (getCiclo()%50==0){
+            int x = Greenfoot.getRandomNumber(500) + 50;
+            addObject(new Ballon(), x, 430);
+
+        }
+
     
+    }
     public int getCiclo(){
         return ciclo;
     }
