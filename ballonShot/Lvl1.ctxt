@@ -9,4 +9,6 @@ comment3.params=
 comment3.target=void\ gerenciarEntradaBalao()
 comment4.params=
 comment4.target=int\ getCiclo()
-numComments=5
+comment5.params=score
+comment5.target=void\ addScore(int)
+numComments=6

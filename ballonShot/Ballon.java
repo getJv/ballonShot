@@ -14,6 +14,8 @@ public class Ballon extends Ator
      */
     public int passo=1;
     public boolean estourado = false;
+    public Lvl1 mundo;
+    
     public Ballon(){
         setImage("ballon/ballon0.png");
     }
@@ -32,17 +34,18 @@ public class Ballon extends Ator
         
     }
 
-    public void gerenciaClick(){
+    private void gerenciaClick(){
         if (Greenfoot.mouseClicked(this)){
             Greenfoot.playSound("ploc.wav");
-            
+            mundo = getWorldOfType(Lvl1.class);
+            mundo.addScore(100);
             estourado = true;
             passo = 1;
         }
 
     }
 
-    public void balaoSaiDeCena(){
+    private void balaoSaiDeCena(){
         if (getY()==0 && !estourado) {
             getWorld().removeObject(this);
         }
@@ -51,7 +54,7 @@ public class Ballon extends Ator
             }
     }
 
-    public void gerenciaImagem(Lvl1 mundo){
+    private void gerenciaImagem(Lvl1 mundo){
 
         if (estourado){
             
@@ -73,7 +76,7 @@ public class Ballon extends Ator
 
     }
 
-    public void gerenciaSubida(){
+    private void gerenciaSubida(){
         if ((getWorldOfType(Lvl1.class).getCiclo()%4)==0){
             setLocation(getX(),getY()-6);
         }

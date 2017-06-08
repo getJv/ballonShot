@@ -14,21 +14,24 @@ public class Lvl1 extends World
      * 
      */
     public int ciclo=1;
+    public Score placar;
     public Lvl1()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 500, 1); 
-
+        placar = new Score();
+        addObject(placar, 540, 24);
     }
 
     public void act(){
-        gerenciarEntradaBalao();
+        
+        gerenciarEntradaBalao();   
         ciclo++;
+        
         if (ciclo==1000){
             ciclo = 1;
         }
-
-        
+     
     }
 
     public void gerenciarEntradaBalao(){
@@ -43,5 +46,9 @@ public class Lvl1 extends World
     }
     public int getCiclo(){
         return ciclo;
+    }
+    
+    public void addScore(int score){
+        placar.addScore(score);
     }
 }
