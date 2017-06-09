@@ -16,7 +16,8 @@ public class Ballon extends Ator
     public boolean estourado = false;
     public Lvl1 mundo;
     public boolean moeda_adicionada = false;
-
+    public boolean bomba_adicionada = false;
+    
     public Ballon(){
         setImage("ballon/ballon0.png");
     }
@@ -24,29 +25,36 @@ public class Ballon extends Ator
     public void act() 
     {
         // Add your action code here.
-
+        gerenciaClick();
         gerenciaSubida();
 
-        gerenciaClick();
         gerenciaImagem(getWorldOfType(Lvl1.class));
         balaoSaiDeCena();//você tem que ser o útimo método a ser executado, por que
         // ninguem gosta de você !
 
     }
-    private void gerenciaClick(){
-        if (Greenfoot.mouseClicked(this) && !moeda_adicionada){          
-            
-                Greenfoot.playSound("ploc.wav");
-                mundo = getWorldOfType(Lvl1.class);
-                mundo.addObject(new Coin(),getX() ,getY());
-                mundo.addScore(100);
-                moeda_adicionada = true;
-                estourado = true;
-                passo = 1;
-            
 
-        }
+    private void gerenciaClick(){
+        int random = Greenfoot.getRandomNumber(2);
+        if (Greenfoot.mouseClicked(this) && !moeda_adicionada && !bomba_adicionada){
+
+            Greenfoot.playSound("ploc.wav");
+            mundo = getWorldOfType(Lvl1.class);
+            if(random == 0 ){
+                mundo.addObject(new Coin(),getX() ,getY());
+                moeda_adicionada = true;
+            }
+            else{
+                mundo.addObject(new Bomb(),getX() ,getY());
+                bomba_adicionada = true;
+            }
+            mundo.addScore(100);            
+            estourado = true;
+            passo = 1;
+
+        }       
     }
+
     private void balaoSaiDeCena(){
         if (getY()==0 && !estourado) {
             getWorld().removeObject(this);

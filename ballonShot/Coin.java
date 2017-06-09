@@ -60,7 +60,7 @@ public class Coin extends Ator
     
       private void gerenciaClick(){
         if (Greenfoot.mouseClicked(this)){
-            //Greenfoot.playSound("ploc.wav");
+            Greenfoot.playSound("coin.wav");
             Lvl1 mundo = getWorldOfType(Lvl1.class);
             
             mundo.addScore(50);
