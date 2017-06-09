@@ -15,7 +15,8 @@ public class Ballon extends Ator
     public int passo=1;
     public boolean estourado = false;
     public Lvl1 mundo;
-    
+    public boolean moeda_adicionada = false;
+
     public Ballon(){
         setImage("ballon/ballon0.png");
     }
@@ -25,42 +26,41 @@ public class Ballon extends Ator
         // Add your action code here.
 
         gerenciaSubida();
-        
+
         gerenciaClick();
         gerenciaImagem(getWorldOfType(Lvl1.class));
         balaoSaiDeCena();//você tem que ser o útimo método a ser executado, por que
         // ninguem gosta de você !
 
-        
     }
-
     private void gerenciaClick(){
-        if (Greenfoot.mouseClicked(this)){
-            Greenfoot.playSound("ploc.wav");
-            mundo = getWorldOfType(Lvl1.class);
-            mundo.addScore(100);
-            estourado = true;
-            passo = 1;
+        if (Greenfoot.mouseClicked(this) && !moeda_adicionada){          
+            
+                Greenfoot.playSound("ploc.wav");
+                mundo = getWorldOfType(Lvl1.class);
+                mundo.addObject(new Coin(),getX() ,getY());
+                mundo.addScore(100);
+                moeda_adicionada = true;
+                estourado = true;
+                passo = 1;
+            
+
         }
-
     }
-
     private void balaoSaiDeCena(){
         if (getY()==0 && !estourado) {
             getWorld().removeObject(this);
         }
         else if (passo==4 && estourado){
-                getWorld().removeObject(this);
-            }
+            getWorld().removeObject(this);
+        }
     }
 
     private void gerenciaImagem(Lvl1 mundo){
 
         if (estourado){
-            
-            
+
             setImage("ballonExplode/ballonExplode" + passo + ".png");
-          
         }
         else {
             setImage("ballon/ballon" + passo + ".png");
