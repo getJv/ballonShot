@@ -14,13 +14,20 @@ public class Lvl1 extends World
      * 
      */
     public int ciclo=1;
-    public Score placar;
+    public Score placar;    
+    public PainelHP painel;
+    
     public Lvl1()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 500, 1); 
         placar = new Score();
+       
+        painel = new PainelHP();
+        addObject(painel, 20, 152);
+        
         addObject(placar, 540, 24);
+        //Greenfoot.setSpeed(40);
     }
 
     public void act(){
@@ -31,7 +38,9 @@ public class Lvl1 extends World
         if (ciclo==1000){
             ciclo = 1;
         }
-     
+        if (placar.getScore()==400){
+            
+        }
     }
 
     public void gerenciarEntradaBalao(){
@@ -50,5 +59,11 @@ public class Lvl1 extends World
     
     public void addScore(int score){
         placar.addScore(score);
+    }
+    
+    public void removeLifeOfScenario(){        
+         painel.removeLife();
+         
+            
     }
 }

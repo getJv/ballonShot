@@ -12,7 +12,7 @@ public class Score extends Ator
      * Act - do whatever the Score wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public int pontuacao = 0;
+    private int pontuacao = 0;
     public Score (){
         
         atualizaImagem(pontuacao);
@@ -28,7 +28,11 @@ public class Score extends Ator
     public void addScore(int score){
         pontuacao += score;        
     }
-
+    
+    public int getScore(){
+        return pontuacao;
+    }
+    
     private void atualizaImagem(int valor ){
 
         GreenfootImage placar = new GreenfootImage(converteNumero(valor),24,Color.WHITE,new Color(0,0,0,0),Color.BLACK);

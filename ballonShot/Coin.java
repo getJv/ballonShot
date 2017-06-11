@@ -63,7 +63,7 @@ public class Coin extends Ator
             Greenfoot.playSound("coin.wav");
             Lvl1 mundo = getWorldOfType(Lvl1.class);
             
-            mundo.addScore(50);
+            mundo.addScore(100);
             clickado = true;
            
         }

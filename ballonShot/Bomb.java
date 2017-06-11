@@ -15,6 +15,7 @@ public class Bomb extends Ator
     public Lvl1 mundo;
     public int passo = 1;    
     public boolean clickado = false;
+    public Life vida;
 
     public void act() 
     {
@@ -33,7 +34,7 @@ public class Bomb extends Ator
 
             setImage("bomb/" + passo + ".png");
         }    
-        if ((mundo.getCiclo()%5)==0 && (passo <= 12)){
+        if ((mundo.getCiclo()%2)==0 && (passo <= 12)){
             passo++;
             
         }
@@ -65,6 +66,8 @@ public class Bomb extends Ator
             mundo = getWorldOfType(Lvl1.class);
 
             mundo.addScore(-200);
+            mundo.removeLifeOfScenario();
+            
 
             clickado = true;
             passo = 1;

@@ -11,4 +11,6 @@ comment4.params=
 comment4.target=int\ getCiclo()
 comment5.params=score
 comment5.target=void\ addScore(int)
-numComments=6
+comment6.params=
+comment6.target=void\ removeLifeOfScenario()
+numComments=7

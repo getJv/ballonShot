@@ -18,6 +18,7 @@ public class Ballon extends Ator
     public boolean moeda_adicionada = false;
     public boolean bomba_adicionada = false;
     
+    
     public Ballon(){
         setImage("ballon/ballon0.png");
     }
@@ -48,7 +49,7 @@ public class Ballon extends Ator
                 mundo.addObject(new Bomb(),getX() ,getY());
                 bomba_adicionada = true;
             }
-            mundo.addScore(100);            
+            mundo.addScore(50);            
             estourado = true;
             passo = 1;
 
@@ -57,7 +58,10 @@ public class Ballon extends Ator
 
     private void balaoSaiDeCena(){
         if (getY()==0 && !estourado) {
+            mundo = getWorldOfType(Lvl1.class);
+            mundo.removeLifeOfScenario();
             getWorld().removeObject(this);
+            
         }
         else if (passo==4 && estourado){
             getWorld().removeObject(this);
