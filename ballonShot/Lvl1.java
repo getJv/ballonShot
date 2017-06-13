@@ -13,14 +13,15 @@ public class Lvl1 extends World
      * Constructor for objects of class Lvl1.
      * 
      */
-    public int ciclo=1;
+    public int ciclo=0;
     public Score placar;    
     public PainelHP painel;
     
     public Lvl1()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 500, 1); 
+        super(600, 500, 1);
+        setPaintOrder(Ballon.class);
         placar = new Score();
        
         painel = new PainelHP();
@@ -33,16 +34,19 @@ public class Lvl1 extends World
     public void act(){
         
         gerenciarEntradaBalao();   
-        ciclo++;
+        gerenciarCiclo();
         
-        if (ciclo==1000){
-            ciclo = 1;
-        }
-        if (placar.getScore()==400){
-            
-        }
+        
     }
 
+    private void gerenciarCiclo(){
+        
+        
+        if (ciclo==1000){
+            ciclo = 0;
+        }
+        ciclo++;
+    }
     public void gerenciarEntradaBalao(){
 
         if (getCiclo()%50==0){

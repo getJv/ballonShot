@@ -28,46 +28,29 @@ public class PainelHP extends Ator
 
     public void act() 
     {
+        verificaGameOver();
         adicionaVidasNoPainel();
     }
 
     public void removeLife(){
-        if (!vidas.isEmpty()){
-            
+       
             getWorld().removeObject(vidas.get(vidas.size()-1));
             vidas.remove(vidas.size()-1);
             
+            int v = 0;
+            
+            v = vidas.size();
+            int fa = 0;
         
-        }
-        else {
-            getWorld().showText("Game Over", getWorld().getWidth()/2, getWorld().getHeight()/2);
-            Greenfoot.stop();
-        }
-    
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-    
     }
     
+    public void verificaGameOver(){
+        if (vidas.isEmpty()){
+            getWorld().showText("Game Over", getWorld().getWidth()/2, getWorld().getHeight()/2);
+            Greenfoot.stop();
+            
+        }
+    }
     public void adicionaVidasNoPainel(){
         mundo = getWorldOfType(Lvl1.class);
         int u=0;
