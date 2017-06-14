@@ -17,8 +17,8 @@ public class Ballon extends Ator
     public Lvl1 mundo;
     public boolean moeda_adicionada = false;
     public boolean bomba_adicionada = false;
-    
-    
+    public int alfa = 255;
+    public int graus = 5;
     public Ballon(){
         setImage("ballon/ballon0.png");
     }
@@ -26,9 +26,10 @@ public class Ballon extends Ator
     public void act() 
     {
         // Add your action code here.
+        
         gerenciaClick();
         gerenciaSubida();
-
+        
         gerenciaImagem(getWorldOfType(Lvl1.class));
         balaoSaiDeCena();//você tem que ser o útimo método a ser executado, por que
         // ninguem gosta de você !
@@ -79,15 +80,24 @@ public class Ballon extends Ator
         }
 
         if ((mundo.getCiclo()%15)==0){
-
+            gerenciaBalanco();
             passo++;
             if (passo==6){
                 passo=1;
             }
         }
-
+        
+        
     }
 
+    public void gerenciaBalanco(){
+        if (getRotation() == 15 || getRotation() == 350){
+            graus = graus * -1;
+            
+        }
+        turn(graus);
+    }
+    
     private void gerenciaSubida(){
         if ((getWorldOfType(Lvl1.class).getCiclo()%4)==0){
             setLocation(getX(),getY()-6);

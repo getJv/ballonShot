@@ -24,6 +24,7 @@ public class Coin extends Ator
         gerenciaImagem(getWorldOfType(Lvl1.class));
         gerenciaDescida();
         gerenciaClick();
+        turn(5);
         coinSaiDeCena();
     }
     

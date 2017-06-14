@@ -16,15 +16,15 @@ public class Bomb extends Ator
     public int passo = 1;    
     public boolean clickado = false;
     public Life vida;
-
+    public int imagem=1;
     public void act() 
     {
         // Add your action code here.
-        setImage("bomb/1.png");
+        
         gerenciaClick();
         gerenciaDescida();
         gerenciaImagem(getWorldOfType(Lvl1.class));
-
+        
         bombaSaiDeCena();
     }
 
@@ -33,10 +33,22 @@ public class Bomb extends Ator
         if (clickado){
 
             setImage("bomb/" + passo + ".png");
-        }    
+        }
+        else {
+            setImage("bomb/" + imagem + ".png");
+            if (imagem > 2){
+                imagem=1;
+                
+            }
+            
+        }
+            
         if ((mundo.getCiclo()%2)==0 && (passo <= 12)){
             passo++;
             
+            imagem++;
+            
+            //turn(5);
         }
     }
 
