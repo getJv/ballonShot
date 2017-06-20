@@ -12,11 +12,13 @@ public class Bomb extends Ator
      * Act - do whatever the Bomb wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public int passo = 1;
+    public boolean clickado = false;  
     public Lvl1 mundo;
-    public int passo = 1;    
-    public boolean clickado = false;
-    public Life vida;
-    public int imagem=1;
+
+    public Bomb(){
+        setImage("bomb/" + passo + ".png");
+    }    
     public void act() 
     {
         // Add your action code here.
@@ -24,32 +26,54 @@ public class Bomb extends Ator
         gerenciaClick();
         gerenciaDescida();
         gerenciaImagem(getWorldOfType(Lvl1.class));
-        
+        gerenciaCiclo(getWorldOfType(Lvl1.class));
         bombaSaiDeCena();
     }
 
-    private void gerenciaImagem(Lvl1 mundo){
+    private void gerenciaClick(){
+        if (Greenfoot.mouseClicked(this) && !clickado){          
 
-        if (clickado){
+            Greenfoot.playSound("syntetic-bomb.wav");
+            mundo = getWorldOfType(Lvl1.class);
 
-            setImage("bomb/" + passo + ".png");
+            mundo.addScore(-200);
+            mundo.removeLifeOfScenario();
+            
+
+            clickado = true;
+            passo = 3;
+
         }
-        else {
-            setImage("bomb/" + imagem + ".png");
-            if (imagem > 2){
-                imagem=1;
-                
+    }
+
+    private void gerenciaCiclo(Lvl1 mundo){
+         if ((mundo.getCiclo()%8)==0) {
+            if (passo == 2 && !clickado){
+                passo=0;
             }
-            
-        }
-            
-        if ((mundo.getCiclo()%2)==0 && (passo <= 12)){
+
             passo++;
             
-            imagem++;
             
-            //turn(5);
+            
+            
         }
+    }
+    private void gerenciaImagem(Lvl1 mundo){
+
+        
+        
+        if (clickado){
+
+            setImage("bombExplode/" + passo + ".png");
+        }
+        else {
+            setImage("bomb/" + passo + ".png");
+            turn(5);
+            
+        }
+            
+       
     }
 
     private void gerenciaDescida(){
@@ -71,19 +95,5 @@ public class Bomb extends Ator
         }
     }
 
-    private void gerenciaClick(){
-        if (Greenfoot.mouseClicked(this) && !clickado){          
-
-            Greenfoot.playSound("syntetic-bomb.wav");
-            mundo = getWorldOfType(Lvl1.class);
-
-            mundo.addScore(-200);
-            mundo.removeLifeOfScenario();
-            
-
-            clickado = true;
-            passo = 1;
-
-        }
-    }
+    
 }

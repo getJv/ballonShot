@@ -46,7 +46,11 @@ public class PainelHP extends Ator
     
     public void verificaGameOver(){
         if (vidas.isEmpty()){
+            Lvl1 mundo = getWorldOfType(Lvl1.class);
             getWorld().showText("Game Over", getWorld().getWidth()/2, getWorld().getHeight()/2);
+           
+          
+            
             Greenfoot.stop();
             
         }

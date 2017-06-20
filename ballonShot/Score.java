@@ -35,7 +35,7 @@ public class Score extends Ator
     
     private void atualizaImagem(int valor ){
 
-        GreenfootImage placar = new GreenfootImage(converteNumero(valor),24,Color.WHITE,new Color(0,0,0,0),Color.BLACK);
+        GreenfootImage placar = new GreenfootImage(converteNumero(valor),30,Color.WHITE,new Color(0,0,0,0),Color.BLACK);
         setImage(placar);
 
     }

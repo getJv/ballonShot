@@ -64,6 +64,10 @@ public class Lvl1 extends World
     public void addScore(int score){
         placar.addScore(score);
     }
+    public int getScore(){
+        
+        return placar.getScore();
+    }
     
     public void removeLifeOfScenario(){        
          painel.removeLife();

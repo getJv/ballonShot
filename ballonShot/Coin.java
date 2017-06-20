@@ -24,7 +24,7 @@ public class Coin extends Ator
         gerenciaImagem(getWorldOfType(Lvl1.class));
         gerenciaDescida();
         gerenciaClick();
-        turn(5);
+        //turn(5);
         coinSaiDeCena();
     }
     
@@ -33,7 +33,7 @@ public class Coin extends Ator
             setImage("coin/coin_" + passo + ".png");
           
 
-        if ((mundo.getCiclo()%15)==0){
+        if ((mundo.getCiclo()%10)==0){
 
             passo++;
             if (passo==6){
