@@ -27,7 +27,7 @@ public class Lvl1 extends World
         painel = new PainelHP();
         addObject(painel, 20, 152);
         
-        addObject(placar, 540, 24);
+        addObject(placar, 535, 24);
         //Greenfoot.setSpeed(40);
     }
 
@@ -64,6 +64,7 @@ public class Lvl1 extends World
     public void addScore(int score){
         placar.addScore(score);
     }
+    
     public int getScore(){
         
         return placar.getScore();

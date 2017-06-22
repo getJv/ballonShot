@@ -51,7 +51,7 @@ public class PainelHP extends Ator
            
           
             
-            Greenfoot.stop();
+           Greenfoot.setWorld(new HiScoreBoard(mundo.getScore()));
             
         }
     }
