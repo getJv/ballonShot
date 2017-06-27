@@ -16,12 +16,13 @@ public class Lvl1 extends World
     public int ciclo=0;
     public Score placar;    
     public PainelHP painel;
-    
+    public boolean gameOver = false;
     public Lvl1()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 500, 1);
-        setPaintOrder(Ballon.class);
+        
+        setPaintOrder(Board.class, Replay.class, Ballon.class);
         placar = new Score();
        
         painel = new PainelHP();
@@ -32,13 +33,22 @@ public class Lvl1 extends World
     }
 
     public void act(){
+        if (!gameOver){
+            gerenciarEntradaBalao();   
+            gerenciarCiclo();
+        }
         
-        gerenciarEntradaBalao();   
-        gerenciarCiclo();
         
         
     }
 
+    public void setGameOver(){
+        gameOver = true;
+    }
+    
+    public void resetGame(){
+        gameOver = false;
+    }
     private void gerenciarCiclo(){
         
         
