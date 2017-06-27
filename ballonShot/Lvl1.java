@@ -42,6 +42,10 @@ public class Lvl1 extends World
         
     }
 
+    public boolean isGameOver(){
+        return gameOver;
+    }
+    
     public void setGameOver(){
         gameOver = true;
     }

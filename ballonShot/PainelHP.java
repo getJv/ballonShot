@@ -39,15 +39,16 @@ public class PainelHP extends Ator
 
         }
 
-            
     }
     public void verificaGameOver(){
         if (vidas.isEmpty()){
             Lvl1 mundo = getWorldOfType(Lvl1.class);
+
+            if (!mundo.isGameOver()){
+                b.adicionaHiBoard(mundo.getScore());
+            }
+
             mundo.setGameOver();
-
-            b.adicionaHiBoard(mundo.getScore());
-
             //Greenfoot.setWorld(new HiScoreBoard(mundo.getScore()));
 
             mundo.addObject(b, getWorld().getWidth()/2, getWorld().getHeight()/2);
